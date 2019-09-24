@@ -8,11 +8,15 @@ open NUnit.Framework
 type stringCalcTests() =
 
     [<Test>]
-    member r.AddEmptyString_ReturnZero () = 
+    member r.AddEmptyString_ReturnsZero () = 
         let calc = stringCalc()
         let result = calc.Add ""
         Assert.That(result,Is.EqualTo 0)
 
-
+    [<TestCase("1",ExpectedResult = 1)>]
+    member  r.AddSingleNumber_ReturnsSameNumber expression = 
+        let calc = stringCalc()
+        calc.Add expression
+        
 
 
