@@ -53,3 +53,9 @@ type stringCalcTests() =
     member  r.AddMoreThanTwoNumbersWithCustomDelimiter_ReturnsSummation expression = 
         let calc = stringCalc()
         calc.Add expression
+
+    [<TestCase("-1",ExpectedResult = "negative numbers not allowed [-1]")>]
+    member  r.AddWithNegativeNumber_ReturnsException expression = 
+        let calc = stringCalc()
+        let result = Assert.Throws(typeof<NegativeNotAllowed> , fun() -> calc.Add expression |> ignore)
+        result.Message
