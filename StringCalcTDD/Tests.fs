@@ -39,3 +39,7 @@ type stringCalcTests() =
         let result = calc.Add "//;\n"
         Assert.That(result, Is.EqualTo 0)
 
+    [<TestCase("//;\n1",ExpectedResult = 1)>]
+    member  r.AddSingleNumberWithCustomDelimiter_ReturnsSameNumber expression = 
+        let calc = stringCalc()
+        calc.Add expression
