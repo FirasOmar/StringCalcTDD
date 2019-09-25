@@ -59,3 +59,8 @@ type stringCalcTests() =
         let calc = stringCalc()
         let result = Assert.Throws(typeof<NegativeNotAllowed> , fun() -> calc.Add expression |> ignore)
         result.Message
+
+    [<TestCase("1,1001",ExpectedResult = 1)>]
+    member r.whenOneOrMoreNumbersAreGreaterThan1000IsUsedThenItIsNotIncludedInSum expression=
+        let calc = stringCalc()
+        calc.Add expression

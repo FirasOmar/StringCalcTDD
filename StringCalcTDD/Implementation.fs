@@ -16,7 +16,8 @@ type  stringCalc () =
             let negatives, positives = 
                 [for n in expression.Split delimiter -> Int32.Parse n] |> List.partition( fun n-> n < 0)
             if negatives.Length > 0 then raise (NegativeNotAllowed negatives)
-            positives |> List.reduce(fun acc v -> acc + v)
+            else 
+                positives |> List.filter(fun n -> n < 1000 ) |> List.reduce(fun acc v  -> acc + v)
     member  x.Add expression = 
        expression |> addInternal [|',';'\n'|]
 
