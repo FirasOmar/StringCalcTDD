@@ -64,3 +64,8 @@ type stringCalcTests() =
     member r.whenOneOrMoreNumbersAreGreaterThan1000IsUsedThenItIsNotIncludedInSum expression=
         let calc = stringCalc()
         calc.Add expression
+
+    [<TestCase("//[*][%]\n1*2%3",ExpectedResult = 6)>]
+    member  r.AddMoreThanTwoNumbersWithCustomDelimiterAnylength_ReturnsSummation expression = 
+        let calc = stringCalc()
+        calc.Add expression

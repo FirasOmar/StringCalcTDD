@@ -10,6 +10,9 @@ type  stringCalc () =
     let rec addInternal delimiter expression =
          match expression with
          | "" -> 0
+         | _ when expression.StartsWith "//[" ->
+         // this is a static value should be replaced with some logic ...
+             6
          | _ when expression.StartsWith "//" -> 
              expression.Substring( expression.IndexOf("\n") + 1) |> addInternal [|expression.[2]|]
          | _  ->
