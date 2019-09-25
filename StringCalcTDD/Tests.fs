@@ -19,7 +19,12 @@ type stringCalcTests() =
         calc.Add expression
 
     [<TestCase("1,2",ExpectedResult = 3)>]
-    member  r.AddTwoNumberswithCommaDelimiter_ReturnsSummation expression = 
+    member  r.AddTwoNumbersWithCommaDelimiter_ReturnsSummation expression = 
+        let calc = stringCalc()
+        calc.Add expression
+
+    [<TestCase("1,2,3",ExpectedResult = 6)>]
+    member  r.AddMoreThanTwoNumbersWithCommaDelimiter_ReturnsSummation expression = 
         let calc = stringCalc()
         calc.Add expression
         
