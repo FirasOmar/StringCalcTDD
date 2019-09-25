@@ -27,6 +27,11 @@ type stringCalcTests() =
     member  r.AddMoreThanTwoNumbersWithCommaDelimiter_ReturnsSummation expression = 
         let calc = stringCalc()
         calc.Add expression
+
+    [<TestCase("1\n 2,3",ExpectedResult = 6)>]
+    member  r.AddMoreThanTwoNumbersWithMultipleDelimiter_ReturnsSummation expression = 
+        let calc = stringCalc()
+        calc.Add expression
         
 
 
