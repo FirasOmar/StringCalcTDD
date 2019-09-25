@@ -34,12 +34,22 @@ type stringCalcTests() =
         calc.Add expression
         
     [<Test>]
-    member  r.AddMoreThanTwoNumbersWithCustomeDelimiter_ReturnsZero () = 
+    member  r.AddEmptyStringWithCustomeDelimiter_ReturnsZero () = 
         let calc = stringCalc()
         let result = calc.Add "//;\n"
         Assert.That(result, Is.EqualTo 0)
 
     [<TestCase("//;\n1",ExpectedResult = 1)>]
     member  r.AddSingleNumberWithCustomDelimiter_ReturnsSameNumber expression = 
+        let calc = stringCalc()
+        calc.Add expression
+
+    [<TestCase("//;\n1;2",ExpectedResult = 3)>]
+    member  r.AddTwoNumbersWithCustomDelimiter_ReturnsSummation expression = 
+        let calc = stringCalc()
+        calc.Add expression
+
+    [<TestCase("//;\n1;2;3",ExpectedResult = 6)>]
+    member  r.AddMoreThanTwoNumbersWithCustomDelimiter_ReturnsSummation expression = 
         let calc = stringCalc()
         calc.Add expression
