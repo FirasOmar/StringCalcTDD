@@ -17,6 +17,11 @@ type stringCalcTests() =
     member  r.AddSingleNumber_ReturnsSameNumber expression = 
         let calc = stringCalc()
         calc.Add expression
+
+    [<TestCase("1,2",ExpectedResult = 3)>]
+    member  r.AddTwoNumberswithCommaDelimiter_ReturnsSummation expression = 
+        let calc = stringCalc()
+        calc.Add expression
         
 
 
