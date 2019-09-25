@@ -33,5 +33,9 @@ type stringCalcTests() =
         let calc = stringCalc()
         calc.Add expression
         
-
+    [<Test>]
+    member  r.AddMoreThanTwoNumbersWithCustomeDelimiter_ReturnsZero () = 
+        let calc = stringCalc()
+        let result = calc.Add "//;\n"
+        Assert.That(result, Is.EqualTo 0)
 
