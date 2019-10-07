@@ -2,6 +2,7 @@
 
 open System
 open System.Linq.Expressions
+open System.Text.RegularExpressions
 
 type NegativeNotAllowed(negatives)=
     inherit Exception(sprintf "negative numbers not allowed %A" negatives)
@@ -11,8 +12,9 @@ type  stringCalc () =
          match expression with
          | "" -> 0
          | _ when expression.StartsWith "//[" ->
-         // this is a static value should be replaced with some logic ...
-             6
+             let s = Regex.Replace(expression,@"[\d-]",",").Replace("-",",").ToCharArray()
+             let numbers = expression.Split(s,StringSplitOptions.RemoveEmptyEntries)
+             numbers|>Seq.map Int32.Parse |> Seq.sum
          | _ when expression.StartsWith "//" -> 
              expression.Substring( expression.IndexOf("\n") + 1) |> addInternal [|expression.[2]|]
          | _  ->
